@@ -1,0 +1,18 @@
+@startuml secuencia_caso_b_granja_chancho
+title Interacción entre Granja y Chancho
+
+participant ":Granja" as granja
+participant ":Chancho" as chancho
+
+granja -> chancho : energia()
+activate chancho
+
+note right of chancho
+    energia = aleteosDisponibles × costoPorAleteo
+    energia = 10 × 8 = 80
+end note
+
+chancho --> granja : 80
+deactivate chancho
+
+@enduml

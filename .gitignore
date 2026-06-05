@@ -1,0 +1,9 @@
+# IDE
+.idea/
+.claude/
+
+# Build
+target/
+
+# OS
+.DS_Store

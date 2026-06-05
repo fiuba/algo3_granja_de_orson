@@ -1,0 +1,29 @@
+@startuml secuencia_caso_a
+title Caso A: Energía del chancho volador luego de 2 aleteos
+
+participant ":TestCase" as test
+participant ":Chancho" as chancho
+participant ":Volar" as volar
+
+test -> chancho ** : new Chancho()
+activate chancho
+chancho -> volar ** : new Volar(8 /* consumo por aleteo */)
+chancho --> test
+deactivate chancho
+
+test -> chancho : vuela(2)
+activate chancho
+chancho -> volar : hacer(2)
+activate volar
+volar --> chancho : 16
+deactivate volar
+note right of chancho : energiaTotalDisponible = 80 - 16 = 64
+chancho --> test
+deactivate chancho
+
+test -> chancho : energia()
+activate chancho
+chancho --> test : 64
+deactivate chancho
+
+@enduml

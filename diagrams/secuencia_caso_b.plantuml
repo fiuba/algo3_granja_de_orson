@@ -1,0 +1,36 @@
+@startuml secuencia_caso_b
+title Caso B: Inicialización
+
+participant ":TestCase" as test
+participant ":Granja" as granja
+participant ":Pato" as pato
+participant ":Nadar" as nadarPato
+participant ":Ganso" as ganso
+participant ":Nadar" as nadarGanso
+participant ":Volar" as volarGanso
+participant ":Chancho" as chancho
+participant ":Volar" as volarChancho
+
+test -> pato ** : new Pato()
+activate pato
+pato -> nadarPato ** : new Nadar(5)
+pato --> test
+deactivate pato
+
+test -> ganso ** : new Ganso()
+activate ganso
+ganso -> nadarGanso ** : new Nadar(2)
+ganso -> volarGanso ** : new Volar(4)
+ganso --> test
+deactivate ganso
+
+test -> chancho ** : new Chancho()
+activate chancho
+chancho -> volarChancho ** : new Volar(8)
+chancho --> test
+deactivate chancho
+
+test -> granja ** : new Granja(pato, ganso, chancho)
+
+
+@enduml

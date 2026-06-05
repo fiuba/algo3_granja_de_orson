@@ -1,0 +1,26 @@
+@startuml secuencia_caso_b_iteracion
+title Caso B: Iteración sobre la colección de animales
+
+participant ":TestCase" as test
+participant ":Granja" as granja
+participant ":Animal" as animal
+
+test -> granja : energia()
+activate granja
+
+loop para cada animal en animales
+    granja -> animal : energia()
+    activate animal
+    animal --> granja : energiaDelAnimal
+    deactivate animal
+end
+
+note right of granja
+    energiaTotal = 15 + 24 + 80 = 119
+    energiaTotal × 1.10 = 119 × 1.10 = 130.9
+end note
+
+granja --> test : 130.9
+deactivate granja
+
+@enduml

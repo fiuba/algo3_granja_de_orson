@@ -1,0 +1,18 @@
+@startuml secuencia_caso_b_granja_pato
+title Interacción entre Granja y Pato
+
+participant ":Granja" as granja
+participant ":Pato" as pato
+
+granja -> pato : energia()
+activate pato
+
+note right of pato
+    energia = chapuzonesDisponibles × costoPorChapuzon
+    energia = 3 × 5 = 15
+end note
+
+pato --> granja : 15
+deactivate pato
+
+@enduml

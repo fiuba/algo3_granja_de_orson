@@ -1,0 +1,75 @@
+@startuml
+
+class Granja {
+    + energia() : float
+}
+
+interface Animal {
+    + energia() : float
+}
+Granja *- "1.*" Animal
+
+Animal <|.. Pato
+Animal <|.. Chancho
+Animal <|.. Ganso
+
+abstract class Habilidad {
+    # costoDeUnaVez : float
+
+    {abstract} + hacer(veces) : float
+}
+
+class Volar {
+    + Volar(costo)
+    + hacer(veces) : float
+}
+
+class Nadar {
+    + Nadar(costo)
+    + hacer(veces) : float
+    + energia() : float
+}
+
+
+Habilidad <|- Volar
+Habilidad <|- Nadar
+
+
+together {
+    class Pato {
+        - energiaTotalDisponible : int
+
+        + Pato()
+        + nada(veces)
+        + energia() : float
+    }
+
+    class Chancho {
+        - energiaTotalDisponible : int
+
+        + Chancho()
+        + vuela(veces)
+        + energia() : float
+    }
+
+    class Ganso {
+        - energiaTotalDisponibleParaVolar : int
+        - energiaTotalDisponibleParaNadar : int
+
+        + Ganso()
+
+        + vuela(veces)
+        + nada(veces)
+        + energia() : float
+    }
+}
+
+Pato *-- Nadar
+Chancho *-- Volar
+
+Ganso *-- "2" Habilidad
+
+
+
+
+@enduml

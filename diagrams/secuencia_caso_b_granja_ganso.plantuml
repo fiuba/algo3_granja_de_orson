@@ -1,0 +1,24 @@
+@startuml secuencia_caso_b_granja_ganso
+title Interacción entre Granja y Ganso
+
+participant ":Granja" as granja
+participant ":Ganso" as ganso
+
+granja -> ganso : energia()
+activate ganso
+
+note right of ganso
+    chapuzonesDisponibles = 4, costoPorChapuzon = 2
+    aleteosDisponibles = 3, costoPorAleteo = 4
+    bonusDescansado = 4
+
+    energiaNadar = 4 × 2 = 8
+    energiaVolar = 3 × 4 = 12
+    energiaBase = 8 + 12 = 20
+    si descansado: energiaBase + 4 = 24
+end note
+
+ganso --> granja : 24
+deactivate ganso
+
+@enduml
